@@ -8,6 +8,7 @@ public class Graph {
     private List<List<Integer>> connectedNode;
     private float scale;
 
+
     public Graph(float scale)
     {
         this.nodes = new ArrayList<>();
@@ -56,6 +57,73 @@ public class Graph {
         {
             System.out.println(e.getMessage());
         }
+    }
+
+    public float getMaxX()
+    {
+        if (this.nodes.size() == 0)
+        {
+            return -999;
+        }
+
+        float maxX = nodes.get(0).getPosition().getX();
+        for (int i = 1; i < nodes.size(); i++) {
+            if (maxX < nodes.get(i).getPosition().getX())
+                maxX = nodes.get(i).getPosition().getX();
+        }
+
+        return maxX;
+    }
+    public float getMaxY()
+    {
+        if (this.nodes.size() == 0)
+        {
+            return -999;
+        }
+
+        float maxY = nodes.get(0).getPosition().getY();
+        for (int i = 1; i < nodes.size(); i++) {
+            if (maxY < nodes.get(i).getPosition().getY())
+                maxY = nodes.get(i).getPosition().getY();
+        }
+
+        return maxY;
+    }
+
+    public float getMinX()
+    {
+        if (this.nodes.size() == 0)
+        {
+            return -999;
+        }
+
+        float minX = nodes.get(0).getPosition().getX();
+        for (int i = 1; i < nodes.size(); i++) {
+            if (minX > nodes.get(i).getPosition().getX())
+                minX = nodes.get(i).getPosition().getX();
+        }
+
+        return minX;
+    }
+    public float getMinY()
+    {
+        if (this.nodes.size() == 0)
+        {
+            return -999;
+        }
+
+        float minY = nodes.get(0).getPosition().getY();
+        for (int i = 1; i < nodes.size(); i++) {
+            if (minY > nodes.get(i).getPosition().getY())
+                minY = nodes.get(i).getPosition().getY();
+        }
+
+        return minY;
+    }
+
+    public float getMapDistance(int id1, int id2)
+    {
+        return Point.distance(nodes.get(id1).getPosition(), nodes.get(id2).getPosition(), scale);
     }
 
     public void printGraph()

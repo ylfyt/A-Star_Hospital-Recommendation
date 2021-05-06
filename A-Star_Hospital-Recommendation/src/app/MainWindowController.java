@@ -1,11 +1,16 @@
 package app;
 
-import classes.Graph;
-import classes.GraphConverter;
+import classes.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 public class MainWindowController {
 
     private Graph graph;
+
+    @FXML
+    private Pane mapPanel;
 
     public void initGraph()
     {
@@ -32,5 +37,27 @@ public class MainWindowController {
             System.out.println("Graph is null");
             return;
         }
+        mapPanel.getChildren().clear();
+        for (int i = 0; i < graph.getListNodes().size(); i++)
+        {
+            for(int id : graph.getListConnectedNode(i))
+            {
+                if (id > i)
+                {
+                    EdgeLine el = new EdgeLine(i, id, graph, mapPanel);
+                    mapPanel.getChildren().add(el);
+                }
+            }
+        }
+
+        for (Node node : graph.getListNodes())
+        {
+            NodeButton nb = new NodeButton(node, graph, mapPanel);
+            mapPanel.getChildren().add(nb);
+        }
+
+
     }
+
+
 }
