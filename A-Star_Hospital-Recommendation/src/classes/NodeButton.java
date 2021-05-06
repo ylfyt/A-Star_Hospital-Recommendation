@@ -1,9 +1,13 @@
 package classes;
 
+import app.MainWindowController;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+
+import java.util.List;
 
 public class NodeButton extends Button
 {
@@ -40,7 +44,57 @@ public class NodeButton extends Button
         this.setLayoutX(xPos - 9);
         this.setLayoutY(yPos - 9);
 
-        this.setOnAction(event -> System.out.println(node.getName()));
+        this.setOnAction(event -> onClickEvent());
+    }
+
+    public void onClickEvent()
+    {
+        try{
+            List<javafx.scene.Node> childs = mapPanel.getChildren();
+
+            for (javafx.scene.Node node : childs)
+            {
+                if (node instanceof EdgeLine)
+                {
+                    EdgeLine el = (EdgeLine) node;
+                    if (this.node.getId() == el.getId1() || this.node.getId() == el.getId2())
+                    {
+                        el.setStroke(Color.RED);
+                        refreshPanel();
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void refreshPanel()
+    {
+        try {
+            List<javafx.scene.Node> childs = mapPanel.getChildren();
+
+            for (javafx.scene.Node node : childs)
+            {
+                if (node instanceof EdgeLine)
+                {
+                    EdgeLine el = (EdgeLine) node;
+                    el.setStroke(Color.BLACK);
+                }
+                else
+                {
+                    NodeButton nb = (NodeButton) node;
+//                    nb.setStyle("-fx-background-color: " + "#FFFFFF" + ";");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     public float getPosXRelative(float x)

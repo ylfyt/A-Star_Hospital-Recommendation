@@ -55,8 +55,6 @@ public class MainWindowController {
             NodeButton nb = new NodeButton(node, graph, mapPanel);
             mapPanel.getChildren().add(nb);
         }
-
-
     }
 
 

@@ -28,6 +28,16 @@ public class EdgeLine extends Line {
 
         this.setEndX(xEnd);
         this.setEndY(yEnd);
+
+        this.setStrokeWidth(2.5);
+    }
+
+    public int getId1(){
+        return id1;
+    }
+
+    public int getId2(){
+        return id2;
     }
 
     public float getPosXRelative(float x)
