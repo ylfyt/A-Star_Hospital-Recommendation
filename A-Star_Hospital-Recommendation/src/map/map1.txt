@@ -1,0 +1,5 @@
+1
+3
+0,0,Rumah Sakit Umum,
+0,1,Rumah Sakit Ibnu Sina,
+1,0,Pos1,

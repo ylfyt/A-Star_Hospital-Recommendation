@@ -1,0 +1,33 @@
+class Point:
+    float x;
+    float y;
+
+    float getX();
+    float getY();
+    static float Distance(Point p1, Point p2, float scale);
+
+
+Class Node:
+    Point pos;
+    int id;
+    String name;
+
+    Point getPosition();
+    int getId();
+    String getName();
+
+
+Class Graph:
+    List<Node> nodes;
+    List<List<int>> connectedNode;
+    float scale;
+
+    List<Node> getListNodes();
+    Node getNode(int id);
+    List<List<int>> getListListConnectedNode();
+    List<int> getListConnectedNode(int id);
+    int getConnectedNode(int id1, int id2);
+    float getScale();
+
+    void addNoe(Node node);
+    void addEdge(int id1, int id2);

@@ -1,5 +1,7 @@
 package app;
 
+import classes.Graph;
+import classes.GraphConverter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +16,10 @@ public class Main extends Application {
         primaryStage.setTitle("A*");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
+        Graph graph = GraphConverter.textToGraph("map1");
+        if (graph != null)
+            graph.printGraph();
     }
 
 
