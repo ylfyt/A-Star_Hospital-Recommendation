@@ -8,13 +8,13 @@ fileEdge = open("A-Star_Hospital-Recommendation/src/map/" + fileEdgeName, "w")
 
 scale = 100000
 nodes = [
-    [-6.900177, 107.599281, "Node1"], #0
-    [-6.897587, 107.599340, "Poliklinik RHS"], #1
-    [-6.896220, 107.599383, "Node2"], #2
-    [-6.896050, 107.598702, "RS Unpad"], #3
-    [-6.895941, 107.598225, "Node3"], #4
-    [-6.896772, 107.597308, "Node4"], #5
-    [-6.900207, 107.597396, "Node5"] #6
+    [-6.900177, 107.599281, "none", "Node1"], #0
+    [-6.897587, 107.599340, "rs", "Poliklinik RHS"], #1
+    [-6.896220, 107.599383, "none", "Node2"], #2
+    [-6.896050, 107.598702, "rs", "RS Unpad"], #3
+    [-6.895941, 107.598225, "none", "Node3"], #4
+    [-6.896772, 107.597308, "none", "Node4"], #5
+    [-6.900207, 107.597396, "none", "Node5"] #6
 ]
 
 edges = [
@@ -36,8 +36,9 @@ fileNode.write(str(numOfNode) + "," + "\n")
 for node in nodes:
     x = node[0]
     y = node[1]
-    nodeName = node[2]
-    fileNode.write(str(x) + "," + str(y) + "," + nodeName + "," + "\n")
+    tp = node[2]
+    nodeName = node[3]
+    fileNode.write(str(x) + "," + str(y) + "," + tp + "," + nodeName + "," + "\n")
 
 
 fileEdge.write(str(numOfEdge) + "," + "\n")

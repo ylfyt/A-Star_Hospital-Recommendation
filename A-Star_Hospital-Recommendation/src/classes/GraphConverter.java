@@ -20,20 +20,22 @@ public class GraphConverter {
             int numOfNode = Integer.parseInt(numOfNodeTemp);
             Graph graph = new Graph(scale);
 
-            int numOfdataNode = 3;
+            int numOfdataNode = 4;
             for (int i = 0; i < numOfNode; i++) {
                 String data[] = scNode.nextLine().split(",");
                 if (data.length >= numOfdataNode)
                 {
                     String xTemp = data[0];
                     String yTemp = data[1];
-                    String nameTemp = data[2];
+                    String typeTemp = data[2];
+                    String nameTemp = data[3];
 
                     float x = Float.parseFloat(xTemp);
                     float y = Float.parseFloat(yTemp);
+                    String type = typeTemp;
                     String name = nameTemp;
 
-                    graph.addNode(x, y, name);
+                    graph.addNode(x, y, type, name);
                 }
             }
 

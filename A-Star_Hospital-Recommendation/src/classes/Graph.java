@@ -39,10 +39,10 @@ public class Graph {
         return this.scale;
     }
 
-    public void addNode(float x, float y, String name)
+    public void addNode(float x, float y, String type, String name)
     {
         int id = nodes.size();
-        this.nodes.add(new Node(x, y, id, name));
+        this.nodes.add(new Node(x, y, id, type, name));
         this.connectedNode.add(new ArrayList<>());
     }
 
@@ -64,6 +64,7 @@ public class Graph {
         for (int i = 0; i < nodes.size(); i++) {
             System.out.print(nodes.get(i).getId());
             nodes.get(i).getPosition().printPoint();
+            System.out.print(nodes.get(i).getType());
             System.out.print(":");
             System.out.print(nodes.get(i).getName());
             if (i != nodes.size()-1)
