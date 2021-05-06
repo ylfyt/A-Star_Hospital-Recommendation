@@ -17,7 +17,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
 
-        Graph graph = GraphConverter.textToGraph("map1");
+        Graph graph = GraphConverter.textToGraph("map2");
         if (graph != null)
             graph.printGraph();
     }
