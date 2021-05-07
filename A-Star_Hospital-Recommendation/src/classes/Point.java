@@ -32,6 +32,6 @@ public class Point
 
     public static float distance(Point p1, Point p2, float scale)
     {
-        return (float) Math.sqrt((p2.x-p1.x)*(p2.x-p1.x) + (p2.y-p1.y)*(p2.y- p1.y) * scale);
+        return (float) Math.sqrt((p2.x-p1.x)*(p2.x-p1.x) + (p2.y-p1.y)*(p2.y- p1.y)) * scale;
     }
 }

@@ -126,6 +126,24 @@ public class Graph {
         return Point.distance(nodes.get(id1).getPosition(), nodes.get(id2).getPosition(), scale);
     }
 
+    public float getMapRouteDistance(List<Integer> route)
+    {
+        float dis = 0;
+        for (int i=0; i < route.size()-1; i++)
+        {
+            int id1 = route.get(i);
+            int id2 = route.get(i+1);
+            dis += getMapDistance(id1, id2);
+        }
+
+        return dis;
+    }
+
+    public int getNumOfNode()
+    {
+        return nodes.size();
+    }
+
     public void printGraph()
     {
         System.out.println("Scale: " + scale);
