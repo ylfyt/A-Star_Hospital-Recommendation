@@ -10,17 +10,17 @@
 
 <VBox maxHeight="768.0" maxWidth="1024.0" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainWindowController">
    <children>
-      <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1024.0" spacing="10.0" style="-fx-background-color: #ff0000;">
+      <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1024.0" spacing="10.0" style="-fx-background-color: #2fb1b5;">
          <children>
             <Button fx:id="browseButton" mnemonicParsing="false" onAction="#handleBrowseButton" text="Browse" />
             <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh" />
             <TextField fx:id="filePathText" editable="false" prefHeight="25.0" prefWidth="800.0" />
          </children>
       </HBox>
-      <Pane fx:id="mapPanel" maxHeight="650.0" maxWidth="1024.0" minHeight="650.0" minWidth="1024.0" prefHeight="650.0" prefWidth="1024.0" />
-      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1024.0">
+      <Pane fx:id="mapPanel" maxHeight="650.0" maxWidth="1024.0" minHeight="650.0" minWidth="1024.0" prefHeight="650.0" prefWidth="1024.0" style="-fx-background-color: #42eff5;" />
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1024.0" style="-fx-background-color: #2fb1b5;">
          <children>
-            <Label text="Route : " />
+            <Label style="-fx-font-weight: bold;" text="Route : " />
             <TextField fx:id="routeTextField" editable="false" prefHeight="25.0" prefWidth="948.0" />
          </children>
          <VBox.margin>

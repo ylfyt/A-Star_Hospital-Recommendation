@@ -10,8 +10,8 @@ public class GraphConverter {
 
     public static Graph textToGraph(String fileName){
         try {
-            Scanner scNode = new Scanner(new File(path + fileName + format));
-            Scanner scEdge = new Scanner(new File(path + fileName + "_edge" + format));
+            Scanner scNode = new Scanner(new File(path + fileName));
+            Scanner scEdge = new Scanner(new File(path + fileName.substring(0, fileName.length()-4) + "_edge" + format));
 
             String scaleTemp = scNode.nextLine().split(",")[0];
             String numOfNodeTemp = scNode.nextLine().split(",")[0];
@@ -22,7 +22,7 @@ public class GraphConverter {
 
             int numOfdataNode = 4;
             for (int i = 0; i < numOfNode; i++) {
-                String data[] = scNode.nextLine().split(",");
+                String[] data = scNode.nextLine().split(",");
                 if (data.length >= numOfdataNode)
                 {
                     String xTemp = data[0];

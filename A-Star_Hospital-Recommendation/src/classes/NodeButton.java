@@ -35,6 +35,7 @@ public class NodeButton extends Button
             String[] data = node.getName().split(" ");
             String numberOfName = data[data.length-1];
             this.setText(numberOfName);
+            this.setStyle("-fx-font-weight: bold;");
         }
 
 

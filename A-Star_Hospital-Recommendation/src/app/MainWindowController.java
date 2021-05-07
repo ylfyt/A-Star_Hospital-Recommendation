@@ -1,10 +1,16 @@
 package app;
 
 import classes.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.nio.file.Paths;
 
 public class MainWindowController {
 
@@ -12,19 +18,37 @@ public class MainWindowController {
     private Pane mapPanel;
     @FXML
     private TextField routeTextField;
+    @FXML
+    private TextField filePathText;
 
-    public void initGraph()
+    public void initGraph(String fileName)
     {
-        String fileName = "map2";
+//        String fileName = "map2";
         Graph graph = GraphConverter.textToGraph(fileName);
         AppManagement.AppManagementInit(graph, mapPanel, routeTextField);
     }
 
-    public void handleBrowseButton()
+    public void handleBrowseButton(ActionEvent event)
     {
         System.out.println("Browse");
-        initGraph();
-        AppManagement.printGraphToWindow();
+
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
+        fileChooser.setInitialDirectory(new File(currentPath));
+        //Show save file dialog
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+
+        if(file != null){
+//            System.out.println(file.getName());
+            filePathText.setText(file.getPath());
+            initGraph(file.getName());
+            AppManagement.printGraphToWindow();
+        }
     }
 
     public void handleRefreshButton()

@@ -20,6 +20,8 @@ public class AppManagement
         graph = g;
         mapPanel = pane;
         routeTextField = tx;
+        mapPanel.getChildren().clear();
+        routeTextField.setText("");
     }
 
     public static List<Integer> astarPathFinding(int idSource, int idTarget)
@@ -118,7 +120,11 @@ public class AppManagement
                         NodeButton nb = (NodeButton) node;
                         if (nb.getNode().getId() == routeId.get(i))
                         {
-                            nb.setStyle("-fx-background-color: " + "#00ff00" + ";");
+                            if (nb.getNode().getType().equals("rs"))
+                                nb.setStyle("-fx-background-color: #00FF00; -fx-font-weight: bold;");
+                            else
+                                nb.setStyle("-fx-background-color: #FF0000; -fx-font-weight: bold;");
+//                            nb.setStyle("-fx-font-weight: bold;");
 
                             routeText.append(nb.getNode().getName());
                             if (i != routeId.size()-1)
@@ -135,7 +141,7 @@ public class AppManagement
 
                             if ((el.getId1() == id1 && el.getId2() == id2) || (el.getId1() == id2 && el.getId2() == id1))
                             {
-                                el.setStroke(Color.RED);
+                                el.setStroke(Color.ORANGE);
                             }
                         }
                     }
