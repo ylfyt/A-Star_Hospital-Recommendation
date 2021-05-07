@@ -4,6 +4,7 @@ import classes.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -17,7 +18,7 @@ public class MainWindowController {
     @FXML
     private Pane mapPanel;
     @FXML
-    private TextField routeTextField;
+    private TextArea routeTextArea;
     @FXML
     private TextField filePathText;
 
@@ -25,7 +26,7 @@ public class MainWindowController {
     {
 //        String fileName = "map2";
         Graph graph = GraphConverter.textToGraph(fileName);
-        AppManagement.AppManagementInit(graph, mapPanel, routeTextField);
+        AppManagement.AppManagementInit(graph, mapPanel, routeTextArea);
     }
 
     public void handleBrowseButton(ActionEvent event)
@@ -55,7 +56,7 @@ public class MainWindowController {
     {
         System.out.println("Refresh");
         AppManagement.printGraphToWindow();
-        routeTextField.setText("");
+        routeTextArea.setText("");
     }
 
 

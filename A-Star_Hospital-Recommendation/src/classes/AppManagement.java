@@ -1,6 +1,8 @@
 package classes;
 
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -13,9 +15,9 @@ public class AppManagement
 {
     public static Graph graph;
     public static Pane mapPanel;
-    public static TextField routeTextField;
+    public static TextArea routeTextField;
 
-    public static void AppManagementInit(Graph g, Pane pane, TextField tx)
+    public static void AppManagementInit(Graph g, Pane pane, TextArea tx)
     {
         graph = g;
         mapPanel = pane;
@@ -124,14 +126,13 @@ public class AppManagement
                                 nb.setStyle("-fx-background-color: #00FF00; -fx-font-weight: bold;");
                             else
                                 nb.setStyle("-fx-background-color: #FF0000; -fx-font-weight: bold;");
-//                            nb.setStyle("-fx-font-weight: bold;");
 
                             routeText.append(nb.getNode().getName());
                             if (i != routeId.size()-1)
                                 routeText.append(" --> ");
                         }
                     }
-                    else
+                    else if (node instanceof EdgeLine)
                     {
                         if (i != routeId.size()-1)
                         {
@@ -147,8 +148,19 @@ public class AppManagement
                     }
                 }
             }
+            if (routeId.size() > 0){
+                float dis = graph.getMapRouteDistance(routeId);
+                dis = (float) Math.round(dis * 100) / 100;
 
-            routeTextField.setText(routeText.toString());
+                String rsRec = graph.getNode(routeId.get(routeId.size()-1)).getName();
+
+                String recText = "Rec: " + rsRec + ", Distance: " + dis + "m \n";
+
+                routeTextField.setText(recText + "Route: " + routeText.toString());
+            }
+            else{
+                routeTextField.setText(routeText.toString());
+            }
         }
         catch (Exception e)
         {
@@ -325,7 +337,19 @@ public class AppManagement
                 if (id > i)
                 {
                     EdgeLine el = new EdgeLine(i, id);
+                    float xPos = (float) (el.getStartX() + el.getEndX()) /2;
+                    float yPos = (float) (el.getStartY() + el.getEndY()) /2;
+
+
+                    float dis = graph.getMapDistance(i, id);
+                    dis = (float) Math.round(dis * 100) / 100;
+
+                    Label disLabel = new Label(dis + "m");
+                    disLabel.setLayoutX(xPos);
+                    disLabel.setLayoutY(yPos);
+                    disLabel.setStyle("-fx-background-color: #42eff5; -fx-font-weight: bold; -fx-text-fill: #FF0000;");
                     mapPanel.getChildren().add(el);
+                    mapPanel.getChildren().add(disLabel);
                 }
             }
         }
