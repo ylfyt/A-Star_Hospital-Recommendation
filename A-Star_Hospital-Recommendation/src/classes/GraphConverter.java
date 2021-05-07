@@ -11,7 +11,7 @@ public class GraphConverter {
     public static Graph textToGraph(String fileName){
         try {
             Scanner scNode = new Scanner(new File(path + fileName));
-            Scanner scEdge = new Scanner(new File(path + fileName.substring(0, fileName.length()-4) + "_edge" + format));
+            Scanner scEdge = new Scanner(new File(path + "edge/"+ fileName.substring(0, fileName.length()-4) + "_edge" + format));
 
             String scaleTemp = scNode.nextLine().split(",")[0];
             String numOfNodeTemp = scNode.nextLine().split(",")[0];
