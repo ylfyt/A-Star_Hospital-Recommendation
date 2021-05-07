@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -16,6 +18,13 @@
          </children>
       </HBox>
       <Pane fx:id="mapPanel" maxHeight="650.0" maxWidth="1024.0" minHeight="650.0" minWidth="1024.0" prefHeight="650.0" prefWidth="1024.0" />
-      <HBox prefHeight="70.0" prefWidth="1024.0" style="-fx-background-color: #0000FF;" />
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1024.0">
+         <children>
+            <Label text="Route : " />
+            <TextField fx:id="routeTextField" editable="false" prefHeight="25.0" prefWidth="948.0" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></HBox>
    </children>
 </VBox>

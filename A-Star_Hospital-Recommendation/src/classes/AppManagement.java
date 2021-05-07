@@ -1,6 +1,7 @@
 package classes;
 
 import javafx.scene.Node;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -12,11 +13,13 @@ public class AppManagement
 {
     public static Graph graph;
     public static Pane mapPanel;
+    public static TextField routeTextField;
 
-    public static void AppManagementInit(Graph g, Pane pane)
+    public static void AppManagementInit(Graph g, Pane pane, TextField tx)
     {
         graph = g;
         mapPanel = pane;
+        routeTextField = tx;
     }
 
     public static List<Integer> astarPathFinding(int idSource, int idTarget)
@@ -104,6 +107,8 @@ public class AppManagement
             printGraphToWindow();
             List<Node> childs = mapPanel.getChildren();
 
+            StringBuilder routeText = new StringBuilder();
+
             for (int i =0; i < routeId.size(); i++)
             {
                 for (Node node : childs)
@@ -114,6 +119,10 @@ public class AppManagement
                         if (nb.getNode().getId() == routeId.get(i))
                         {
                             nb.setStyle("-fx-background-color: " + "#00ff00" + ";");
+
+                            routeText.append(nb.getNode().getName());
+                            if (i != routeId.size()-1)
+                                routeText.append(" --> ");
                         }
                     }
                     else
@@ -132,6 +141,8 @@ public class AppManagement
                     }
                 }
             }
+
+            routeTextField.setText(routeText.toString());
         }
         catch (Exception e)
         {

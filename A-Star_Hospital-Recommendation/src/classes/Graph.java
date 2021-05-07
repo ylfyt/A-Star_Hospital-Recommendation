@@ -8,12 +8,17 @@ public class Graph {
     private List<List<Integer>> connectedNode;
     private float scale;
 
+    private int numOfRS;
+    private int numOfUnknonw;
+
 
     public Graph(float scale)
     {
         this.nodes = new ArrayList<>();
         this.connectedNode = new ArrayList<>();
         this.scale = scale;
+        numOfRS = 0;
+        numOfRS = 0;
     }
 
     public List<Node> getListNodes(){
@@ -43,6 +48,16 @@ public class Graph {
     public void addNode(float x, float y, String type, String name)
     {
         int id = nodes.size();
+        if (type.equals("rs"))
+        {
+            numOfRS++;
+        }
+        else
+        {
+            numOfUnknonw++;
+            name += " " + numOfUnknonw;
+        }
+
         this.nodes.add(new Node(x, y, id, type, name));
         this.connectedNode.add(new ArrayList<>());
     }

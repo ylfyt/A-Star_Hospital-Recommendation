@@ -20,21 +20,24 @@ public class NodeButton extends Button
     public NodeButton(Node node)
     {
         super();
-        this.setMaxSize(18, 18);
+        this.setMaxSize(15, 15);
         this.node = node;
 
         if (node.getType().equals("rs"))
         {
             icon = new ImageView(new Image(assetPath + "plusIcon.png"));
+            icon.setFitWidth(15);
+            icon.setFitHeight(15);
+            this.setGraphic(icon);
         }
         else
         {
-            icon = new ImageView(new Image(assetPath + "targetIcon.png"));
+            String[] data = node.getName().split(" ");
+            String numberOfName = data[data.length-1];
+            this.setText(numberOfName);
         }
 
-        icon.setFitWidth(18);
-        icon.setFitHeight(18);
-        this.setGraphic(icon);
+
 
         float xPos = AppManagement.getPosXRelative(node.getPosition().getX());
         float yPos = AppManagement.getPosYRelative(node.getPosition().getY());
