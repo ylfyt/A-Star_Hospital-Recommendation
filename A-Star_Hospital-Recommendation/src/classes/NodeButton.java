@@ -20,7 +20,7 @@ public class NodeButton extends Button
     public NodeButton(Node node)
     {
         super();
-        this.setMaxSize(15, 15);
+//        this.setMaxSize(20, 20);
         this.node = node;
 
         if (node.getType().equals("rs"))
@@ -55,6 +55,7 @@ public class NodeButton extends Button
         if (route == null)
         {
             System.out.println("Route is null");
+            AppManagement.routeTextField.setText("Route is not found!");
             return;
         }
         AppManagement.refreshMapRoute(route);
