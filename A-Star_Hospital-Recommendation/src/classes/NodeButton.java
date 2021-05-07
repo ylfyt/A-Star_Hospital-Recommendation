@@ -50,6 +50,7 @@ public class NodeButton extends Button
 
     public void onClickEvent()
     {
+        System.out.println("id:" + node.getId());
         List<Integer> route = AppManagement.getRouteRecommendation(node.getId());
         if (route == null)
         {
