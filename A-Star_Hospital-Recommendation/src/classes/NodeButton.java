@@ -35,6 +35,7 @@ public class NodeButton extends Button
             String[] data = node.getName().split(" ");
             String numberOfName = data[data.length-1];
             this.setText(numberOfName);
+//            this.setText(node.getId() + "");
             this.setStyle("-fx-font-weight: bold;");
         }
 
@@ -50,7 +51,10 @@ public class NodeButton extends Button
 
     public void onClickEvent()
     {
-        System.out.println("id:" + node.getId());
+        System.out.print("id:" + node.getId() + " Pos:");
+        node.getPosition().printPoint();
+        System.out.println();
+//        System.out.println(AppManagement.graph.getNumOfNode());
         List<Integer> route = AppManagement.getRouteRecommendation(node.getId());
         if (route == null)
         {

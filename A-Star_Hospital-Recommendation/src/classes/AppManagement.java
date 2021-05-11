@@ -347,7 +347,7 @@ public class AppManagement
                     Label disLabel = new Label(dis + "m");
                     disLabel.setLayoutX(xPos);
                     disLabel.setLayoutY(yPos);
-                    disLabel.setStyle("-fx-background-color: #42eff5; -fx-font-weight: bold; -fx-text-fill: #FF0000;");
+                    disLabel.setStyle("-fx-background-color: #42eff5; -fx-font-weight: bold; -fx-text-fill: #28e03b;");
                     mapPanel.getChildren().add(el);
                     mapPanel.getChildren().add(disLabel);
                 }
