@@ -9,7 +9,7 @@ fileEdge = open("A-Star_Hospital-Recommendation/src/map/edge/" + fileEdgeName, "
 scale = 100000
 nodes = [
     [-6.900177, 107.599281, "none", "Node"], #0
-    [-6.897587, 107.599340, "rs", "Poliklinik RHS"], #1
+    [-6.897587, 107.599340, "rs", "Poliklinik RSHS"], #1
     [-6.896220, 107.599383, "none", "Node"], #2
     [-6.896050, 107.598702, "rs", "RS Unpad"], #3
     [-6.895941, 107.598225, "none", "Node"], #4

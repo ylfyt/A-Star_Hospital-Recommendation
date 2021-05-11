@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="768.0" maxWidth="1024.0" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainWindowController">
+<VBox maxHeight="878.0" maxWidth="1024.0" minHeight="768.0" minWidth="1024.0" prefHeight="878.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainWindowController">
    <children>
       <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1024.0" spacing="10.0" style="-fx-background-color: #2fb1b5;">
          <children>
@@ -19,7 +19,7 @@
          </children>
       </HBox>
       <Pane fx:id="mapPanel" maxHeight="650.0" maxWidth="1024.0" minHeight="650.0" minWidth="1024.0" prefHeight="650.0" prefWidth="1024.0" style="-fx-background-color: #42eff5;" />
-      <HBox alignment="CENTER" prefHeight="90.0" prefWidth="1024.0" style="-fx-background-color: #2fb1b5;">
+      <HBox alignment="CENTER" prefHeight="181.0" prefWidth="1024.0" style="-fx-background-color: #2fb1b5;">
          <children>
             <TextArea fx:id="routeTextArea" editable="false" prefHeight="70.0" prefWidth="971.0">
                <HBox.margin>

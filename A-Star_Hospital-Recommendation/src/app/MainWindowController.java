@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class MainWindowController {
 
@@ -49,6 +50,8 @@ public class MainWindowController {
             filePathText.setText(file.getPath());
             initGraph(file.getName());
             AppManagement.printGraphToWindow();
+//            List<Integer> rute = AppManagement.astarPathFinding(13, 22);
+//            AppManagement.refreshMapRoute(rute);
         }
     }
 

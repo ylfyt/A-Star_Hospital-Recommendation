@@ -30,6 +30,16 @@ public class AppManagement
     {
         try{
             List<Float> heu = getHeuristic(idTarget);
+
+//            System.out.println("Heuristik untuk " + graph.getNode(idTarget).getName());
+//            for (int i = 0; i < heu.size(); i++)
+//            {
+//                float h = heu.get(i);
+//                h = (float) Math.round(h * 100) / 100;
+//                System.out.println(graph.getNode(i).getName() + " : " + h + " m");
+//            }
+//            System.out.println("=====================================");
+
             List<Integer> stack = new ArrayList<>();
             List<List<Integer>> blackList = new ArrayList<>();
             List<List<Integer>> stackDis = new ArrayList<>();
@@ -53,7 +63,7 @@ public class AppManagement
         }
     }
 
-    public static List<Integer> getRouteRecommendation(int idSource)
+    public static List<List<Integer>> getRouteRecommendation(int idSource)
     {
         if (graph == null)
         {
@@ -95,7 +105,25 @@ public class AppManagement
                         minIdx = i;
                 }
 
-                return routes.get(minIdx);
+                for (int i = 0; i < distances.size(); i++) {
+                    int idx = i;
+                    for (int j = i+1; j < distances.size(); j++) {
+                        if (distances.get(idx) > distances.get(j))
+                            idx = j;
+                    }
+
+                    List<Integer> temp = new ArrayList<>(routes.get(i));
+                    routes.set(i, new ArrayList<>(routes.get(idx)));
+                    routes.set(idx, temp);
+
+                    Float tempDis = distances.get(i);
+                    distances.set(i, distances.get(idx));
+                    distances.set(idx, tempDis);
+
+                }
+
+
+                return routes;
             }
         }
         catch (Exception e)
@@ -154,7 +182,7 @@ public class AppManagement
 
                 String rsRec = graph.getNode(routeId.get(routeId.size()-1)).getName();
 
-                String recText = "Rec: " + rsRec + ", Distance: " + dis + "m \n";
+                String recText = "Recommendation : " + rsRec + ",   Distance : " + dis + "m \n";
 
                 routeTextField.setText(recText + "Route: " + routeText.toString());
             }

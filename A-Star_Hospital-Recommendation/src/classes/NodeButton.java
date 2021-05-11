@@ -55,14 +55,37 @@ public class NodeButton extends Button
         node.getPosition().printPoint();
         System.out.println();
 //        System.out.println(AppManagement.graph.getNumOfNode());
-        List<Integer> route = AppManagement.getRouteRecommendation(node.getId());
-        if (route == null)
+
+        List<List<Integer>> routes = AppManagement.getRouteRecommendation(node.getId());
+        if (routes == null)
         {
             System.out.println("Route is null");
             AppManagement.routeTextField.setText("Route is not found!");
             return;
         }
-        AppManagement.refreshMapRoute(route);
+        AppManagement.refreshMapRoute(routes.get(0));
+
+        if(routes.size() > 1)
+        {
+            StringBuilder text = new StringBuilder(AppManagement.routeTextField.getText() + "\n\n");
+            text.append("Another Routes: \n");
+            for (int i = 1; i < routes.size(); i++) {
+                List<Integer> route = routes.get(i);
+                float dis = AppManagement.graph.getMapRouteDistance(route);
+                dis = (float) Math.round(dis * 100) / 100;
+                text.append(dis);
+                text.append(" m : ");
+                for (int j = 0; j < route.size(); j++) {
+                    text.append(AppManagement.graph.getNode(route.get(j)).getName());
+                    if (j != route.size()-1)
+                        text.append(" --> ");
+                }
+                if (i != routes.size()-1)
+                    text.append("\n");
+            }
+
+            AppManagement.routeTextField.setText(text.toString());
+        }
     }
 
     public Node getNode(){
