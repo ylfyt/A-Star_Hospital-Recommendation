@@ -55,13 +55,7 @@ public class Graph {
         else
         {
             numOfUnknonw++;
-            name += " " + numOfUnknonw;
         }
-//        if (id == 18)
-//        {
-//            new Point(x, y).printPoint();
-//            System.out.println(name);
-//        }
 
         this.nodes.add(new Node(x, y, id, type, name));
         this.connectedNode.add(new ArrayList<>());

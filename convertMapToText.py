@@ -82,11 +82,15 @@ numOfEdge = len(edges)
 
 fileNode.write(str(scale) + "," + "\n")
 fileNode.write(str(numOfNode) + "," + "\n")
+count = 1
 for node in nodes:
     x = node[0]
     y = node[1]
     tp = node[2]
     nodeName = node[3]
+    if (tp == "none"):
+        nodeName += " " + str(count)
+        count += 1
     fileNode.write(str(x) + "," + str(y) + "," + tp + "," + nodeName + "," + "\n")
 
 
